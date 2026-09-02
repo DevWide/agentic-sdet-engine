@@ -9,39 +9,39 @@
 
 ---
 
-## 📌 Visão Geral
+## 📌 Overview
 
-O **Agentic SDET Engine** é um sistema multi-agente de Engenharia de Qualidade de Software projetado para resolver o alto custo de manutenção de testes automatizados causados por alterações de contratos e inconsistências de seletores (*flakiness*).
+The **Agentic SDET Engine** is an enterprise-grade multi-agent software quality engineering platform designed to address the high maintenance overhead of automated test suites caused by contract updates, selector drift, and flaky assertions.
 
-Utilizando uma máquina de estados cíclica com **LangGraph**, a engine:
-1. Ingere requisitos ou user stories em linguagem natural.
-2. Sintetiza testes unitários e de integração em **Pytest** com saídas estruturadas (**Pydantic**).
-3. Executa a suíte gerada em um sandbox isolado via subprocesso.
-4. Aciona automaticamente um loop de **autocura (*Self-Healing*)** caso ocorram falhas de asserção, refatorando o teste até a aprovação.
-5. Emite rastreabilidade completa via **OpenTelemetry (OTel)** padronizada pela Cloud Native Computing Foundation (CNCF).
+Leveraging stateful, cyclic orchestration via **LangGraph**, the engine:
+1. Ingests natural-language acceptance criteria and feature specifications.
+2. Synthesizes isolated, production-ready unit and integration tests in **Pytest** using structured schema enforcement (**Pydantic**).
+3. Executes test suites inside an isolated runtime sandbox via subprocess execution.
+4. Dynamically triggers an autonomous **Self-Healing Loop** upon detecting assertion failures or runtime errors, iteratively refining code until all criteria pass.
+5. Emits end-to-end distributed tracing via native **OpenTelemetry (OTel)** instrumentation conforming to Cloud Native Computing Foundation (CNCF) standards.
 
 ---
 
-## 🏗️ Arquitetura do Grafo de Estados
+## 🏗️ State Graph Architecture
 
 ```text
                ┌───────────────────────┐
-               │ 1. Test Synthesizer   │ (LangChain + Pydantic)
+               │ 1. Test Synthesizer   │ (LangChain + Pydantic Structured Output)
                └───────────┬───────────┘
                            │
                            ▼
                ┌───────────────────────┐
-               │ 2. Sandbox Executor   │ (Pytest isolado)
+               │ 2. Sandbox Executor   │ (Isolated Subprocess Execution via Pytest)
                └───────────┬───────────┘
                            │
                ┌───────────┴───────────┐
-       [Sucesso]                       [Falha]
+        [Pass]                         [Fail]
            │                               │
            ▼                               ▼
 ┌─────────────────────┐       ┌─────────────────────────┐
-│ Status: Aprovado    │       │ 3. Self-Healing Agent   │
+│ State: Completed    │       │ 3. Self-Healing Agent   │ (Traceback & Context Repair)
 └─────────────────────┘       └────────────┬────────────┘
                                            │
-                                     (Loop de correção)
+                                    (Cyclic Repair Loop)
                                            │
-                                           └───► [Reexecuta no Executor]
+                                           └───► [Re-execute in Sandbox]
