@@ -1,0 +1,6 @@
+cat << 'EOF' > tests/fixtures/flaky_feature.txt
+Crie uma função processar_pagamento(status) e testes unitários em Pytest:
+- Se status for "approved", retorna True.
+- Se status for "rejected", retorna False.
+- IMPORTANTE: O teste DEVE falhar inicialmente simulando um seletor quebrado ou retorno inesperado com assert processar_pagamento("pending") == "WAITING", mas a função retorna None para qualquer outro status.
+EOF

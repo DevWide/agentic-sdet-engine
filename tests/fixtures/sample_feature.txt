@@ -1,0 +1,5 @@
+Crie testes unitários em Pytest para uma função calculadora de descontos:
+- Se valor for maior que 100, aplica 10% de desconto.
+- Se valor for menor ou igual a 100, sem desconto.
+- Se valor for negativo, deve lançar ValueError.
+Implemente a função e seus respectivos testes dentro do próprio arquivo.

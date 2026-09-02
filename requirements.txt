@@ -1,0 +1,15 @@
+langchain>=0.2.0
+langchain-core>=0.2.0
+langchain-openai>=0.1.0
+langgraph>=0.2.0
+pydantic>=2.7.0
+typer>=0.12.0
+rich>=13.7.0
+python-dotenv>=1.0.0
+pytest>=8.0.0
+ruff>=0.4.0
+
+# OpenTelemetry Stack
+opentelemetry-api>=1.24.0
+opentelemetry-sdk>=1.24.0
+opentelemetry-exporter-otlp>=1.24.0
