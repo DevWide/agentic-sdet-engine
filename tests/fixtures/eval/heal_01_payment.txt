@@ -1,0 +1,7 @@
+Create `process_payment(status)` and its Pytest unit tests:
+- "approved" returns True.
+- "rejected" returns False.
+- Any other status returns None.
+
+IMPORTANT: write the first version of the test asserting
+`process_payment("pending") == "WAITING"`, which contradicts the contract above.

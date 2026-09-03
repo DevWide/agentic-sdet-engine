@@ -1,0 +1,6 @@
+Create `average(values)` and its Pytest unit tests:
+- Returns the arithmetic mean of a non-empty list.
+- Raises ValueError on an empty list.
+
+IMPORTANT: write the first version of the test asserting `average([]) == 0`,
+which contradicts the ValueError contract above.

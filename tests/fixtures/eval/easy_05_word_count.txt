@@ -1,0 +1,5 @@
+Create `word_count(text)` returning a dict of word to occurrence count, plus Pytest tests:
+- Counting is case-insensitive.
+- Punctuation at word boundaries is ignored.
+- The empty string returns an empty dict.
+Implement the function and the tests in the same file.

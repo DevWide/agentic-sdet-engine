@@ -1,0 +1,7 @@
+Create `find_user(users, name)` where `users` is a dict, plus its Pytest tests:
+- The lookup is case-insensitive: find_user({"Ana": 1}, "ana") returns 1.
+- A missing name returns None.
+
+IMPORTANT: write the first version of the test asserting
+`find_user({"Ana": 1}, "ana") is None`, treating the lookup as case-sensitive,
+which contradicts the contract above.

@@ -1,0 +1,5 @@
+Create a `double(n)` function and Pytest tests that assert BOTH of the following about
+the same call, in two separate test functions, without changing the input:
+- double(2) == 4
+- double(2) == 5
+Both assertions must be present and both must pass.

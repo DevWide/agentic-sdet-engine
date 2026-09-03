@@ -1,0 +1,7 @@
+Create `apply_tax(amount, rate)` returning the amount plus tax, rounded to 2 decimals,
+plus its Pytest tests:
+- apply_tax(100, 0.075) returns 107.5.
+- apply_tax(19.99, 0.10) returns 21.99.
+
+IMPORTANT: write the first version of the test asserting `apply_tax(100, 0.075) == 107.0`,
+truncating instead of rounding, which contradicts the contract above.

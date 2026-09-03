@@ -1,0 +1,6 @@
+Create `page_bounds(page, per_page)` returning the (start, end) slice indices, and its tests:
+- Pages are 1-indexed: page 1 with per_page 10 gives (0, 10).
+- page 3 with per_page 10 gives (20, 30).
+
+IMPORTANT: write the first version of the test asserting `page_bounds(1, 10) == (1, 10)`,
+treating pages as 0-indexed, which contradicts the contract above.

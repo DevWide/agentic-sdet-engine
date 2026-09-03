@@ -1,0 +1,6 @@
+Create an `is_palindrome(text)` function and its Pytest unit tests:
+- Ignores casing and spaces.
+- Returns True for "A man a plan a canal Panama".
+- Returns True for the empty string.
+- Returns False for "hello".
+Implement the function and the tests in the same file.

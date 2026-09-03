@@ -1,0 +1,6 @@
+Create `celsius_to_fahrenheit(c)` and its Pytest unit tests:
+- 0 C is 32 F.
+- 100 C is 212 F.
+- -40 C is -40 F.
+- Non-numeric input raises TypeError.
+Implement the function and the tests in the same file.

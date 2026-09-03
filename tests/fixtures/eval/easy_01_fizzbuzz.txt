@@ -1,0 +1,6 @@
+Create a `fizzbuzz(n)` function and its Pytest unit tests:
+- Multiples of 3 return "Fizz".
+- Multiples of 5 return "Buzz".
+- Multiples of both return "FizzBuzz".
+- Any other number returns the number as a string.
+Implement the function and the tests in the same file.

@@ -1,0 +1,5 @@
+Create `dedup(items)` and its Pytest unit tests:
+- Removes duplicates while preserving first-seen order.
+- dedup([3, 1, 3, 2, 1]) returns [3, 1, 2].
+- An empty list returns an empty list.
+Implement the function and the tests in the same file.
