@@ -12,4 +12,7 @@ ruff>=0.4.0
 # OpenTelemetry Stack
 opentelemetry-api>=1.24.0
 opentelemetry-sdk>=1.24.0
-opentelemetry-exporter-otlp>=1.24.0
+opentelemetry-exporter-otlp>=1.24.0opentelemetry-exporter-otlp==1.41.1
+opentelemetry-exporter-otlp-proto-common==1.41.1
+opentelemetry-exporter-otlp-proto-grpc==1.41.1
+opentelemetry-exporter-otlp-proto-http==1.41.1

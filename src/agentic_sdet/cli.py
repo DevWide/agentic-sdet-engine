@@ -5,6 +5,8 @@ from rich.console import Console
 from rich.panel import Panel
 from rich.syntax import Syntax
 
+from agentic_sdet.telemetry.tracer import tracer, flush_telemetry
+
 load_dotenv()
 from agentic_sdet.graph import build_sdet_graph
 
@@ -36,6 +38,8 @@ def run(spec_path: Path = typer.Argument(..., exists=True, help="Arquivo com req
     
     console.print("\n[bold]Código Final Gerado:[/bold]")
     console.print(Syntax(final_state["generated_code"], "python", theme="monokai", line_numbers=True))
+
+    flush_telemetry()  # Força o envio de todos os traces antes de encerrar o CLI
 
 if __name__ == "__main__":
     app()
