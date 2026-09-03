@@ -31,7 +31,18 @@ from agentic_sdet.nodes.synthesizer import MODEL_NAME  # noqa: E402
 from agentic_sdet.telemetry.tracer import flush_telemetry, tracer  # noqa: E402
 
 app = typer.Typer(help="Autonomous SDET & self-healing testing engine")
-console = Console()
+# record=True keeps the rendered output in memory so --save-svg can export it.
+console = Console(record=True)
+
+
+def _export_svg(path: Optional[Path], title: str) -> None:
+    """Write the console session to a standalone SVG — no screenshot tooling needed."""
+    if path is None:
+        return
+    path.parent.mkdir(parents=True, exist_ok=True)
+    console.save_svg(str(path), title=title)
+    console.print(f"\n[dim]Session exported to {path}[/]")
+
 
 OUTCOME_STYLE = {
     "pass_first_try": ("green", "pass"),
@@ -45,6 +56,9 @@ OUTCOME_STYLE = {
 def run(
     spec_path: Path = typer.Argument(
         ..., exists=True, help="File holding the requirement / user story"
+    ),
+    save_svg: Optional[Path] = typer.Option(
+        None, "--save-svg", help="Export the terminal session to an SVG file"
     ),
 ) -> None:
     """Synthesize a Pytest suite from a spec, run it, and self-heal it until it passes."""
@@ -88,6 +102,8 @@ def run(
     console.print(
         Syntax(final_state["generated_code"], "python", theme="monokai", line_numbers=True)
     )
+
+    _export_svg(save_svg, f"agentic-sdet run {spec_path.name}")
 
     flush_telemetry()
     raise typer.Exit(code=0 if passed else 1)
@@ -166,6 +182,9 @@ def evaluate(
         "--fail-under",
         help="Exit non-zero if the as-expected rate falls below this percentage",
     ),
+    save_svg: Optional[Path] = typer.Option(
+        None, "--save-svg", help="Export the terminal session to an SVG file"
+    ),
 ) -> None:
     """Run the whole spec corpus and report success rate, healing recovery, cost and latency."""
     paths = sorted(p for p in corpus.glob("*.txt") if not only or p.stem.startswith(only))
@@ -217,6 +236,8 @@ def evaluate(
         }
         json_out.write_text(json.dumps(payload, indent=2), encoding="utf-8")
         console.print(f"\n[dim]Raw results written to {json_out}[/]")
+
+    _export_svg(save_svg, f"agentic-sdet eval ({len(paths)} specs)")
 
     flush_telemetry()
 
